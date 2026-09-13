@@ -261,7 +261,7 @@ export default function Hero({ started, onStart, onJinglePlay, onTrainApproach, 
       {/* ── TRAIN ── */}
       <div
         ref={trainRef}
-        className={`train-container ${trainDeparting ? 'departing' : trainMoving ? 'arrived' : 'offscreen'}`}
+        className={`train-container ${trainDeparting ? 'departing' : trainMoving ? 'arrived' : 'offscreen'} ${trainArrived && !trainDeparting ? 'stopped' : ''}`}
         onClick={handleTrainClick}
         style={{ cursor: trainArrived && !trainDeparting ? 'pointer' : 'default' }}
       >

@@ -64,8 +64,9 @@ export default function App() {
                   src="/profile.png"
                   alt="Shivam Singh"
                   style={{
-                    width: '400px',
-                    height: '400px',
+                    width: '100%',
+                    maxWidth: '400px',
+                    aspectRatio: '1 / 1',
                     objectFit: 'cover',
                     borderRadius: '50%',
                     border: '3px solid #f5a623'
@@ -90,7 +91,7 @@ export default function App() {
                     { val: '8.11', label: 'CGPA' },
                     { val: '600+', label: 'LeetCode' },
                     { val: '2', label: 'Projects' },
-                    { val: '1', label: 'Internship' }
+                    { val: '2', label: 'Internship' }
                   ].map(s => (
                     <div key={s.label} className="about-stat">
                       <div className="stat-val">{s.val}</div>

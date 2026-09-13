@@ -25,7 +25,7 @@ export default function TrainSVG({ className = '' }) {
         <rect x="5" y="138" width="170" height="8" rx="2" fill="#002060"/>
         {/* wheels */}
         {[25, 75, 125, 155].map(wx => (
-          <g key={wx}>
+          <g key={wx} className="wheel-group" style={{ transformOrigin: `${wx}px 158px` }}>
             <circle cx={wx} cy="158" r="16" fill="#1a1a2e" stroke="#f5a623" strokeWidth="2"/>
             <circle cx={wx} cy="158" r="8" fill="#003580" stroke="#aaa" strokeWidth="1"/>
             <circle cx={wx} cy="158" r="3" fill="#f5a623"/>
@@ -62,7 +62,7 @@ export default function TrainSVG({ className = '' }) {
         <rect x="90" y="118" width="4" height="6" rx="2" fill="#f5a623"/>
         <rect x="5" y="138" width="180" height="8" rx="2" fill="#002060"/>
         {[25, 75, 125, 165].map(wx => (
-          <g key={wx}>
+          <g key={wx} className="wheel-group" style={{ transformOrigin: `${wx}px 158px` }}>
             <circle cx={wx} cy="158" r="16" fill="#1a1a2e" stroke="#f5a623" strokeWidth="2"/>
             <circle cx={wx} cy="158" r="8" fill="#1a4080" stroke="#aaa" strokeWidth="1"/>
             <circle cx={wx} cy="158" r="3" fill="#f5a623"/>
@@ -132,7 +132,7 @@ export default function TrainSVG({ className = '' }) {
 
         {/* main wheels (large driving wheels) */}
         {[70, 118].map(wx => (
-          <g key={wx}>
+          <g key={wx} className="wheel-group" style={{ transformOrigin: `${wx}px 158px` }}>
             <circle cx={wx} cy="158" r="22" fill="#1a1a2e" stroke="#f5a623" strokeWidth="2.5"/>
             <circle cx={wx} cy="158" r="14" fill="#2c1a1a" stroke="#888" strokeWidth="1"/>
             <circle cx={wx} cy="158" r="5" fill="#f5a623"/>
@@ -146,13 +146,21 @@ export default function TrainSVG({ className = '' }) {
           </g>
         ))}
         {/* small front wheel */}
-        <circle cx="35" cy="162" r="14" fill="#1a1a2e" stroke="#f5a623" strokeWidth="2"/>
-        <circle cx="35" cy="162" r="7" fill="#2c1a1a" stroke="#888" strokeWidth="1"/>
-        <circle cx="35" cy="162" r="2.5" fill="#f5a623"/>
+        <g className="wheel-group" style={{ transformOrigin: '35px 162px' }}>
+          <circle cx="35" cy="162" r="14" fill="#1a1a2e" stroke="#f5a623" strokeWidth="2"/>
+          <circle cx="35" cy="162" r="7" fill="#2c1a1a" stroke="#888" strokeWidth="1"/>
+          <circle cx="35" cy="162" r="2.5" fill="#f5a623"/>
+          <line x1="35" y1="148" x2="35" y2="176" stroke="#888" strokeWidth="1" />
+          <line x1="21" y1="162" x2="49" y2="162" stroke="#888" strokeWidth="1" />
+        </g>
         {/* small rear wheel */}
-        <circle cx="175" cy="162" r="12" fill="#1a1a2e" stroke="#f5a623" strokeWidth="2"/>
-        <circle cx="175" cy="162" r="6" fill="#2c1a1a" stroke="#888" strokeWidth="1"/>
-        <circle cx="175" cy="162" r="2" fill="#f5a623"/>
+        <g className="wheel-group" style={{ transformOrigin: '175px 162px' }}>
+          <circle cx="175" cy="162" r="12" fill="#1a1a2e" stroke="#f5a623" strokeWidth="2"/>
+          <circle cx="175" cy="162" r="6" fill="#2c1a1a" stroke="#888" strokeWidth="1"/>
+          <circle cx="175" cy="162" r="2" fill="#f5a623"/>
+          <line x1="175" y1="150" x2="175" y2="174" stroke="#888" strokeWidth="1" />
+          <line x1="163" y1="162" x2="187" y2="162" stroke="#888" strokeWidth="1" />
+        </g>
 
         {/* connecting rods */}
         <rect x="35" y="153" width="98" height="5" rx="2" fill="#c0392b" stroke="#f5a623" strokeWidth="0.5"/>
