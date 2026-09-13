@@ -18,19 +18,29 @@ const T_TAGLINE        = 6000  // tagline + CTAs fade in
 function FlipChar({ char, delay }) {
   const [displayed, setDisplayed] = useState(' ')
   const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 &|/-'
+  
   useEffect(() => {
     let iter = 0
-    const id = setInterval(() => {
-      if (iter < 10) {
-        setDisplayed(CHARS[Math.floor(Math.random() * CHARS.length)])
-        iter++
-      } else {
-        setDisplayed(char.toUpperCase())
-        clearInterval(id)
-      }
-    }, 55)
-    return () => clearInterval(id)
-  }, [char])
+    let id
+    
+    const timeoutId = setTimeout(() => {
+      id = setInterval(() => {
+        if (iter < 8) {
+          setDisplayed(CHARS[Math.floor(Math.random() * CHARS.length)])
+          iter++
+        } else {
+          setDisplayed(char.toUpperCase())
+          clearInterval(id)
+        }
+      }, 100)
+    }, delay || 0)
+    
+    return () => {
+      clearTimeout(timeoutId)
+      clearInterval(id)
+    }
+  }, [char, delay])
+  
   return <span className="flip-char">{displayed}</span>
 }
 
@@ -255,6 +265,9 @@ export default function Hero({ started, onStart, onJinglePlay, onTrainApproach, 
           <a href="#contact" className="btn-secondary">
             <span>📬</span> Buy a Ticket
           </a>
+          <a href="/resume.pdf" download className="btn-secondary" target="_blank" rel="noopener noreferrer">
+            <span>📄</span> Download Resume
+          </a>
         </div>
       </div>
 
@@ -281,20 +294,6 @@ export default function Hero({ started, onStart, onJinglePlay, onTrainApproach, 
       </div>
 
 
-      {/* Click-to-start overlay — blocks until user gesture unlocks audio */}
-      {!started && (
-        <div className="start-overlay" onClick={onStart}>
-          <div className="start-overlay-inner">
-            <div className="start-icon-wrapper">
-              <div className="start-pulse-ring" />
-              <div className="start-icon">🙏</div>
-            </div>
-            <div className="start-namaskar">Namaskar</div>
-            <div className="start-label">CLICK TO BOARD</div>
-            <div className="start-sub">Shivam Singh Express — Ready for departure</div>
-          </div>
-        </div>
-      )}
     </section>
   )
 }

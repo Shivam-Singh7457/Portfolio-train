@@ -10,7 +10,7 @@ import { useAudio } from './components/AudioManager.jsx'
 
 export default function App() {
   const audio = useAudio()
-  const [started, setStarted] = useState(false)
+  const [started, setStarted] = useState(true)
 
   useEffect(() => {
     if (!started) {
